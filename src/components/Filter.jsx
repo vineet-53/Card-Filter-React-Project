@@ -1,12 +1,27 @@
 import React from "react";
 import { filterData } from "../data";
-import Button from "./Button";
-const Filter = () => {
+const Filter = (props) => {
+  const { data } = props;
+  
+  function handleFilterClick(event) {
+    const filterValue = event.target.innerText;
+    // const newData = data.data.filter((category) => category == filterValue);
+    // console.log(newData)
+    console.log(data.data.key);
+  }
   return (
-    <div className="flex justify-center py-2">
-      <ul className="flex gap-4  items-center">
+    <div className="flex justify-center py-2 ">
+      <ul className="flex gap-4  items-center my-7">
         {filterData.map((data) => {
-          return <Button key={data.id} {...data} />;
+          return (
+            <button
+              key={data.id}
+              onClick={handleFilterClick}
+              className="px-2 text-white border-2 border-indigo-950 bg-slate-600 focus:border-slate-100 rounded-md"
+            >
+              {data.title}
+            </button>
+          );
         })}
       </ul>
     </div>

@@ -31,7 +31,7 @@ const App = () => {
     <div className="app">
       <Navbar />
       <section className="bg-slate-500 w-full min-h-screen">
-        <Filter />
+        <Filter data={data} />
         {loader ? <Loader /> : <Cards data={data} />}
       </section>
     </div>
