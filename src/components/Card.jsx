@@ -16,7 +16,7 @@ const Card = (props) => {
     readMore ? setDesc(initDesc) : setDesc(description);
   }
   return (
-    <div className="flex flex-col w-[300px] overflow-hidden rounded-md bg-indigo-950 text-slate-100 ">
+    <div className="card hover:scale-[1.05] transition-all duration-[.5s] ease-in-out flex flex-col w-[300px] overflow-hidden rounded-md bg-indigo-950 text-slate-100 ">
       {/* image */}
       <div className="relative rounded-sm  w-full ">
         <img src={image.url} alt={image.alt} className="object-cover" />
