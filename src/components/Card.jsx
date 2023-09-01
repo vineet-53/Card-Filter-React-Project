@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FcLike } from "react-icons/fc";
+import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 import { toast } from "react-toastify";
 const Card = (props) => {
   const { title, image, description: desc } = props.course;
@@ -16,9 +16,9 @@ const Card = (props) => {
         {/* like button */}
         <button
           onClick={handleLike}
-          className="absolute right-0 bottom-0 bg-slate-50 w-max h-max rounded-full p-1"
+          className="absolute right-0 bottom-0 px-2 py-1 w-max h-max rounded-full "
         >
-          {like ? <FcLike size={25} /> : <FcLike size={25} />}
+          {!like ? <FcLikePlaceholder size={25} /> : <FcLike size={25} />}
         </button>
       </div>
       {/* heading */}
