@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 const App = () => {
   const [loader, setLoader] = useState(true);
   const [data, setData] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -21,17 +22,22 @@ const App = () => {
         // save data to var;
         setData(data);
       } catch (err) {
+        setLoader(true);
         toast.error("something went wrong");
       }
     };
 
     fetchData();
   }, []);
+  function setFilteredData(filteredData) {
+    // coming from filter component
+    setData(filteredData);
+  }
   return (
     <div className="app">
       <Navbar />
       <section className="bg-slate-500 w-full min-h-screen">
-        <Filter data={data} />
+        <Filter data={data} setFilteredData={setFilteredData} />
         {loader ? <Loader /> : <Cards data={data} />}
       </section>
     </div>

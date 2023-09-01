@@ -2,12 +2,11 @@ import React from "react";
 import { filterData } from "../data";
 const Filter = (props) => {
   const { data } = props;
-  
+
   function handleFilterClick(event) {
     const filterValue = event.target.innerText;
-    // const newData = data.data.filter((category) => category == filterValue);
-    // console.log(newData)
-    console.log(data.data.key);
+    const category = data.data[filterValue];
+    props.setFilteredData(category);
   }
   return (
     <div className="flex justify-center py-2 ">

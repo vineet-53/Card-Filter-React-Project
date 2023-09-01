@@ -3,11 +3,13 @@ import Card from "./Card";
 const Cards = (props) => {
   let courses = [];
   function getCourse() {
-    if (props.data == null) return;
-    Object.values(props.data.data).forEach((category) => {
-      category.forEach((course) => courses.push(course));
-    });
-    return courses;
+    if (props.data?.data) {
+      Object.values(props.data.data).forEach((category) => {
+        category.forEach((course) => courses.push(course));
+      });
+      return courses;
+    }
+    courses = props.data;
   }
   getCourse();
   return (

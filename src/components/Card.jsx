@@ -34,7 +34,7 @@ const Card = (props) => {
           {title}
         </h1>
         {/* para */}
-        <p>
+        <p onClick={handleReadMore}>
           {desc}
           <button onClick={handleReadMore} className="text-blue-400">
             {readMore ? <span>Show Less</span> : <span> ....Read More </span>}
