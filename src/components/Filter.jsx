@@ -2,11 +2,11 @@ import React from "react";
 import { filterData } from "../data";
 const Filter = (props) => {
   const { data } = props;
-
-  function handleFilterClick(event) {
-    const filterValue = event.target.innerText;
-    const category = data.data[filterValue];
-    props.setFilteredData(category);
+  function handleFilterClick(title) {
+    if (title != "All") props.setCourses(data.data[title]);
+    else {
+      props.setCourses(data);
+    }
   }
   return (
     <div className="flex justify-center py-2 ">
@@ -15,7 +15,9 @@ const Filter = (props) => {
           return (
             <button
               key={data.id}
-              onClick={handleFilterClick}
+              onClick={() => {
+                handleFilterClick(data.title);
+              }}
               className="px-2 text-white border-2 border-indigo-950 bg-slate-600 focus:border-slate-100 rounded-md"
             >
               {data.title}

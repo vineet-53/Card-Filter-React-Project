@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 const Cards = (props) => {
-  let courses = [];
+  let courseArr = [];
+  const { courses } = props;
   const [likedCourses, setLikedCourses] = useState([]);
   function getCourse() {
-    if (props.data?.data) {
-      Object.values(props.data.data).forEach((category) => {
-        category.forEach((course) => courses.push(course));
+    if (courses?.data) {
+      console.log("data array");
+      Object.values(courses.data).forEach((category) => {
+        category.forEach((course) => courseArr.push(course));
       });
-      return courses;
+      return courseArr;
+    } else {
+      console.log("simple array");
+      return (courseArr = [...courses]);
     }
-    courses = props.data;
   }
-  getCourse();
   return (
     <div className="flex justify-center max-w-[1000px] flex-wrap  mx-auto gap-4">
-      {courses.map((course) => {
+      {getCourse().map((course) => {
         return (
           <Card
             key={course.id}
