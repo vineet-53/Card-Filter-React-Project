@@ -1,15 +1,28 @@
 import React, { useState } from "react";
+import "./Card.css";
 import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 import { toast } from "react-toastify";
 const Card = (props) => {
-  const { title, image, description } = props.course;
+  const { id: courseId, title, image, description } = props.course;
+  const { likedCourses, setLikedCourses } = props;
   let initDesc = `${description.slice(0, 100)}`;
-  const [like, setLike] = useState(false);
   const [desc, setDesc] = useState(initDesc);
   const [readMore, setReadMore] = useState(false);
   function handleLike() {
-    like ? toast.info("Course DisLiked") : toast.success("Course Liked");
-    setLike(!like);
+    // course remove
+    if (likedCourses.includes(courseId)) {
+      setLikedCourses((prevLikedCourses) =>
+        prevLikedCourses.filter((cid) => cid != courseId)
+      );
+      toast.warn("Course Removed");
+    } else {
+      // course add when empty
+      if (likedCourses == []) setLikedCourses([courseId]);
+      // add course when non-empty
+      else setLikedCourses([...likedCourses, courseId]);
+      toast.success("Liked Course");
+    }
+    console.log(likedCourses);
   }
   function handleReadMore() {
     setReadMore(!readMore);
@@ -25,7 +38,11 @@ const Card = (props) => {
           onClick={handleLike}
           className="absolute right-1 bg-custom rounded-full bottom-[-1rem] px-2 py-1 w-[40px] h-[40px]"
         >
-          {!like ? <FcLikePlaceholder size={25} /> : <FcLike size={25} />}
+          {likedCourses.includes(courseId) ? (
+            <FcLike size={25} />
+          ) : (
+            <FcLikePlaceholder size={25} />
+          )}
         </button>
       </div>
       {/* heading */}

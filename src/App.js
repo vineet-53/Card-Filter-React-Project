@@ -16,14 +16,15 @@ const App = () => {
       try {
         const res = await fetch(apiUrl);
         const data = await res.json();
-
         // loader hide
         setLoader(false);
         // save data to var;
         setData(data);
       } catch (err) {
         setLoader(true);
-        toast.error("something went wrong");
+        setTimeout(() => {
+          fetchData();
+        }, 5000);
       }
     };
 

@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./Card";
 const Cards = (props) => {
   let courses = [];
+  const [likedCourses, setLikedCourses] = useState([]);
   function getCourse() {
     if (props.data?.data) {
       Object.values(props.data.data).forEach((category) => {
@@ -13,9 +14,16 @@ const Cards = (props) => {
   }
   getCourse();
   return (
-    <div className="flex justify-center max-w-[1000px] flex-wrap  mx-auto gap-3">
+    <div className="flex justify-center max-w-[1000px] flex-wrap  mx-auto gap-4">
       {courses.map((course) => {
-        return <Card key={course.id} course={course} />;
+        return (
+          <Card
+            key={course.id}
+            course={course}
+            setLikedCourses={setLikedCourses}
+            likedCourses={likedCourses}
+          />
+        );
       })}
     </div>
   );
