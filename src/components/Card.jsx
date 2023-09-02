@@ -22,7 +22,6 @@ const Card = (props) => {
       else setLikedCourses([...likedCourses, courseId]);
       toast.success("Liked Course");
     }
-    console.log(likedCourses);
   }
   function handleReadMore() {
     setReadMore(!readMore);

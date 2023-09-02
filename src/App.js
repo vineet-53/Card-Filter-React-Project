@@ -9,8 +9,8 @@ import { toast } from "react-toastify";
 
 const App = () => {
   const [loader, setLoader] = useState(true);
-  const [data, setData] = useState([]);
   const [courses, setCourses] = useState([]);
+  const [category, setCategory] = useState(filterData[0].title);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -20,7 +20,6 @@ const App = () => {
         setLoader(false);
         // save data to var;
         setCourses(data);
-        setData(data);
       } catch (err) {
         setLoader(true);
         setTimeout(() => {
@@ -34,9 +33,9 @@ const App = () => {
   return (
     <div className="app">
       <Navbar />
-      <section className="bg-slate-500 w-full min-h-screen">
-        <Filter data={data} setCourses={setCourses} />
-        {loader ? <Loader /> : <Cards courses={courses} />}
+      <section className="bg-slate-500 w-full min-h-screen py-5">
+        <Filter setCourses={setCourses} setCategory={setCategory} />
+        {loader ? <Loader /> : <Cards courses={courses} category={category} />}
       </section>
     </div>
   );

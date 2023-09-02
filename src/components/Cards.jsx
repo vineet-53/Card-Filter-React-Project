@@ -2,18 +2,16 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 const Cards = (props) => {
   let courseArr = [];
-  const { courses } = props;
+  const { courses, category } = props;
   const [likedCourses, setLikedCourses] = useState([]);
   function getCourse() {
-    if (courses?.data) {
-      console.log("data array");
+    if (category === "All") {
       Object.values(courses.data).forEach((category) => {
         category.forEach((course) => courseArr.push(course));
       });
       return courseArr;
     } else {
-      console.log("simple array");
-      return (courseArr = [...courses]);
+      return courses.data[category];
     }
   }
   return (

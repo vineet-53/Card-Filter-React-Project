@@ -1,16 +1,13 @@
 import React from "react";
 import { filterData } from "../data";
 const Filter = (props) => {
-  const { data } = props;
+  const { setCategory } = props;
   function handleFilterClick(title) {
-    if (title != "All") props.setCourses(data.data[title]);
-    else {
-      props.setCourses(data);
-    }
+    setCategory(title);
   }
   return (
     <div className="flex justify-center py-2 ">
-      <ul className="flex gap-4  items-center my-7">
+      <ul className="flex gap-4  items-center my-5">
         {filterData.map((data) => {
           return (
             <button
