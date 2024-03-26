@@ -5,11 +5,12 @@ In this project, I learned how to filter data fetched from the server and render
 
 ## Getting Started
 
-- Clone this project: `git clone <github repo>`
-- Navigate to the project directory: `cd my-project`
-- Install dependencies: `npm install`
-- Start the project: `npm start or npm run dev`
-
+```bash
+  git clone https://github.com/vineet-53/Filter-Cards-React
+  cd Filter-Cards-React
+  npm install 
+  npm run dev
+```
 ## Overview
 Cards Dashboard
 ![Development Filteration](https://github.com/vineet-53/top-courses-cards-react/assets/116667797/392aabb0-57b2-44a6-b2ea-2dc948a52241)
